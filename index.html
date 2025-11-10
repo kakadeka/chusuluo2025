@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>致褚老师</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+        
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+        
+        .main-title {
+            font-size: 5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            animation: fadeIn 2s ease-in;
+        }
+        
+        .sub-title {
+            font-size: 2rem;
+            animation: fadeIn 3s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .main-title { font-size: 3rem; }
+            .sub-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <video id="video-background" autoplay muted loop playsinline>
+        <source src="video.mp4" type="video/mp4">
+        您的浏览器不支持视频播放
+    </video>
+    
+    <div class="content">
+        <div class="main-title">2025年秋</div>
+        <div class="sub-title">致褚老师</div>
+    </div>
+
+    <script>
+        // 启用视频声音（需要用户交互）
+        document.addEventListener('click', function() {
+            const video = document.getElementById('video-background');
+            video.muted = false;
+        }, { once: true });
+        
+        // 10秒后自动跳转
+        setTimeout(function() {
+            window.location.href = 'https://weibo.com';
+        }, 10000);
+        
+        // 确保视频自动播放
+        window.addEventListener('load', function() {
+            const video = document.getElementById('video-background');
+            video.play().catch(function(error) {
+                console.log('自动播放被阻止:', error);
+            });
+        });
+    </script>
+</body>
+</html>
